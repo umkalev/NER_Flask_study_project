@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Распознавание сущностей (NER)</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .user-input, .result {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .user-input {
+            background-color: #b1e3f9;
+        }
+        .result {
+            background-color: #e6f7ff;
+            white-space: pre-wrap; 
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Распознавание именованных сущностей (NER)</h1>
+        <form method="post">
+            <textarea name="user_input" placeholder="Введите текст..."></textarea><br>
+            <input type="submit" value="Анализировать">
+        </form>
+
+        {% if user_input %}
+        <div class="user-input">
+            <strong>Введённый текст:</strong><br>{{ user_input }}
+        </div>
+        <div class="result">
+            <strong>Обнаруженные именованные сущности:</strong><br>{{ result }}
+            <img  class="animated-gif" src="{{url_for('static', filename='happy-new-year-pets.gif')}}" />
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
